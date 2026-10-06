@@ -27,6 +27,11 @@ jobs:
           pushFilter: "(-source|-man)$"
       - name: Build Darling output
         run: |
-          nix build .#darling
-          cachix push baris-darling $(nix eval --raw .#darling)
-          cachix pin baris-darling darling $(nix eval --raw .#darling) --keep-forever
+          # All outputs: out (runtime) and sdk (macOS SDK for cross-builds).
+          # Plain .#darling builds out only.
+          nix build '.#darling^*'
+          OUT=$(nix eval --raw .#darling)
+          SDK=$(nix build '.#darling^sdk' --print-out-paths --no-link)
+          cachix push baris-darling "$OUT" "$SDK"
+          cachix pin baris-darling darling "$OUT" --keep-forever
+          cachix pin baris-darling darling-sdk "$SDK" --keep-forever

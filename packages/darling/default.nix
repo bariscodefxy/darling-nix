@@ -121,7 +121,7 @@ stdenv.mkDerivation {
     rev = "e947f0d5a3c6bba27e3631d9bf0da2a9840e6894";
     fetchSubmodules = true;
     # Real hash comes from the first CI run's "got sha256-..." line.
-    hash = lib.fakeHash;
+    hash = "sha256-ZPq433Bg3H6OJnMTcLOqZJ2vpSYdGyo/q6qGMbXKuYk=";
     # Remove 500MB of dependency test files to get under Hydra output limit
     postFetch = ''
       rm -r $out/src/external/openjdk/test
