@@ -113,14 +113,15 @@ let
 in
 stdenv.mkDerivation {
   pname = "darling";
-  version = "unstable-2026-02-12";
+  version = "v0.1.20260608";
 
   src = fetchFromGitHub {
     owner = "darlinghq";
     repo = "darling";
-    rev = "f3217a0edabdcc32378b8fb10e7b25f2f864f271";
+    rev = "e947f0d5a3c6bba27e3631d9bf0da2a9840e6894";
     fetchSubmodules = true;
-    hash = "sha256-vyQ+y0LpWWH2bJwDKVuV+ZuBoj0jxQU0Rit0vLiBqUQ=";
+    # Real hash comes from the first CI run's "got sha256-..." line.
+    hash = lib.fakeHash;
     # Remove 500MB of dependency test files to get under Hydra output limit
     postFetch = ''
       rm -r $out/src/external/openjdk/test

@@ -43,11 +43,4 @@ self: super: {
   ###### Native libraries
 
   });
-
-  binutils = if (super.targetPlatform ? isDarwin)
-             then self.darlingPackages.binutils
-             else super.binutils;
-  gcc = if (super.targetPlatform ? isDarwin)
-        then self.darlingPackages.gcc
-        else super.gcc;
 }
