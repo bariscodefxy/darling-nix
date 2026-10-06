@@ -4,7 +4,7 @@
 
   nixConfig.extra-substituters = "https://baris-darling.cachix.org";
   # Fill in from the cache page on cachix.org after creating it.
-  nixConfig.extra-trusted-public-keys = "baris-darling.cachix.org-1:PLACEHOLDER";
+  nixConfig.extra-trusted-public-keys = "baris-darling.cachix.org-1:6jYpzslepWFfSEIpABq+BGEdnID93++mGxYCIZZ6QV0=";
 
   outputs = { self, nixpkgs, flake-utils, ... }:
   flake-utils.lib.eachDefaultSystem
